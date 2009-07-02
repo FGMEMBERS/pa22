@@ -1,0 +1,43 @@
+<?xml version="1.0"?>
+
+<PropertyList>
+
+  <path>fuel_indicator.ac</path>
+
+  <animation>
+    <type>material</type>
+    <object-name>Circle</object-name>
+    <object-name>hand</object-name>
+    <emission>
+      <red>1.0</red>
+      <green>0.6</green>
+      <blue>0.3</blue>
+      <factor-prop>sim/model//material/instruments/factor</factor-prop>
+    </emission>
+  </animation>
+
+  <animation>
+    <type>rotate</type>
+    <object-name>hand</object-name>
+    <property>instrumentation/fuel-indicator[0]</property>
+    <factor>5.28</factor>
+    <center>
+      <x-m>0.0</x-m>
+      <y-m>0.0</y-m>
+      <z-m>-0.009</z-m>
+    </center>
+    <axis>
+      <x>-1.0</x>
+      <y>0.0</y>
+      <z>0.0</z>
+    </axis>
+  </animation>
+
+<!-- *** LoD *** -->
+  <animation> 
+    <type>range</type>
+    <min-m>0</min-m>
+    <max-m>30</max-m>
+  </animation>
+
+</PropertyList>

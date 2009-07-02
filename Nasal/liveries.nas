@@ -1,0 +1,1 @@
+aircraft.livery.init("Aircraft/pa22/Models/Liveries", "sim/model/livery-cabin/name", "sim/model/livery-fuel-valve/name", "sim/model/livery-fuselage/name", "sim/model/livery-wheel-pants/name", "sim/model/livery-wings/name");

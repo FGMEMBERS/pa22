@@ -1,0 +1,38 @@
+<?xml version="1.0"?>
+
+<PropertyList>
+
+  <sim>
+
+    <model>
+
+      <livery-cabin>
+        <name type="string">Green</name>
+        <texture>Liveries/cabin_green.png</texture>
+      </livery-cabin>
+
+      <livery-fuel-valve>
+        <name type="string">Green</name>
+        <texture>Liveries/fuel_valve_green.png</texture>
+      </livery-fuel-valve>
+
+      <livery-fuselage>
+        <name type="string">Green</name>
+        <texture>Liveries/fuselage_green.png</texture>
+      </livery-fuselage>
+
+      <livery-wheel-pants>
+        <name type="string">Green</name>
+        <texture>Liveries/wheel_pants_green.png</texture>
+      </livery-wheel-pants>
+
+      <livery-wings>
+        <name type="string">Green</name>
+        <texture>wings.png</texture>
+      </livery-wings>
+
+    </model>
+
+  </sim>
+
+</PropertyList>
