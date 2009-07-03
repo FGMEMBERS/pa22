@@ -641,7 +641,7 @@
   <rain>
     <name>rain</name>
     <mode>looped</mode>
-    <path>Aircraft/pa22-160/Sounds/rain_canopy.wav</path>
+    <path>Aircraft/pa22/Sounds/rain_canopy.wav</path>
     <condition>
       <greater-than>
         <property>/sim/model/rain/raining-norm</property>
