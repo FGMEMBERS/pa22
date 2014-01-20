@@ -1642,7 +1642,7 @@
   <animation>
     <type>translate</type>
     <object-name>interconnect</object-name>
-    <property>sim/auto-coordination</property>
+    <property>controls/flight/auto-coordination</property>
     <factor>0.05</factor>    
     <axis>
       <x>1.0</x>

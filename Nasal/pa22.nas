@@ -148,7 +148,7 @@ var autostart = func {
 # Auto Coordination
 
 var auto_coordination_switch = func (v = -1) {
-	toggle=getprop("sim/auto-coordination");
+	toggle=getprop("controls/flight/auto-coordination");
   
 	if(v == -1)
 	{
@@ -159,7 +159,7 @@ var auto_coordination_switch = func (v = -1) {
 		toggle = v;
 	}
 	
-	setprop("sim/auto-coordination",toggle);
+	setprop("controls/flight/auto-coordination",toggle);
   
 #	if(toggle == 1)
 #	{
