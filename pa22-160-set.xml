@@ -1,0 +1,448 @@
+<?xml version="1.0"?>
+
+<PropertyList>
+  
+  <sim>
+    
+    <status>beta</status>
+    <description>PA-22-160</description>
+    <author>Robert Leda (3D), Pawel Luchowski (Nasal)</author>
+    
+    <flight-model>yasim</flight-model>
+    <aero>pa22-160-yasim</aero>
+    <fuel-fraction>1.0</fuel-fraction>
+    
+    <model>
+      <path>Aircraft/pa22/Models/pa22.xml</path>
+      
+      <livery>
+        <file type="string"/>
+      </livery>
+      
+      <primer-pos type="bool">false</primer-pos>
+      <move-compass type="bool">false</move-compass>
+      <show-wheel-pants type="int">0</show-wheel-pants>
+      <yokes-alpha type="double">0</yokes-alpha>
+      
+      <door-positions>
+        <pilot_door>
+          <position-norm type="double">0.0</position-norm>
+          <name type="string">pilot's door</name>
+        </pilot_door>
+        
+        <passenger_door>
+          <position-norm type="double">0.0</position-norm>
+          <name type="string">passenger's door</name>
+        </passenger_door>
+        
+        <pilot_window>
+          <position-norm type="double">0.0</position-norm>
+          <name type="string">pilot window</name>
+        </pilot_window>
+        
+        <baggage_door>
+          <position-norm type="double">0.0</position-norm>
+          <name type="string">baggage door</name>
+        </baggage_door>
+        
+        <vent>
+          <position-norm type="double">0.0</position-norm>
+          <name type="string">vent 1</name>
+        </vent>
+        
+        <vent>
+          <position-norm type="double">0.0</position-norm>
+          <name type="string">vent 2</name>
+        </vent>
+        
+        <vent>
+          <position-norm type="double">0.0</position-norm>
+          <name type="string">vent 3</name>
+        </vent>
+        
+        <vent>
+          <position-norm type="double">0.0</position-norm>
+          <name type="string">vent 4</name>
+        </vent>
+        
+      </door-positions>
+    </model>
+    
+    
+    
+    <startup>
+      <splash-texture>Aircraft/pa22/splash.png</splash-texture>
+    </startup>
+    
+    <help>
+      <key>
+        <name>e</name>
+        <desc>Turn on/off Master switch</desc>
+      </key>
+      <key>
+        <name>d</name>
+        <desc>Turn on/off dome light</desc>
+      </key>
+      <key>
+        <name>F/f</name>
+        <desc>Turn fuel valve</desc>
+      </key>
+      <key>
+        <name>L/l</name>
+        <desc>Move landing/taxi light switch up/down</desc>
+      </key>
+      <key>
+        <name>Ctrl-A</name>
+        <desc>Engage/disengage autopilot</desc>
+      </key>
+      <key>
+        <name>Ctrl-S</name>
+        <desc>Toggle autopilot mode</desc>
+      </key>
+      <line>Vso 49 MPH</line>
+      <line>________________________Procedures_________________________</line>
+      <line>Takeoff: no flaps, full throttle, rotate at 50-60 MPH</line>
+      <line>Climbout: no flaps, full throttle, 84 MPH</line>
+      <line>Cruise: Throttle 75%, mixture lean</line>
+      <line>Landing: full flaps, 75-80 MPH</line>
+    </help>
+    
+    <tutorials include="Tutorials/pa-22-tutorials.xml"/>
+    
+    <sound>
+      <path>Aircraft/pa22/Sounds/pa22-sound.xml</path>
+    </sound>
+    
+    <systems>
+      <autopilot>
+        <path>Aircraft/pa22/Systems/ako64_autopilot.xml</path>
+      </autopilot>
+      <!-- Path intentionally left empty - electrical system is defined in nasal script -->
+      <electrical>
+        <path></path>
+      </electrical>
+    </systems>
+    
+    <multiplay>
+      <generic>
+        <int n="0" type="int">0</int> <!-- immat -->
+        <int n="1" type="int">0</int> <!-- immat -->
+        <int n="2" type="int">0</int> <!-- immat -->
+        <int n="3" type="int">0</int> <!-- immat -->
+        <int n="4" type="int">0</int> <!-- immat -->
+        <int n="5" type="int">0</int> <!-- immat -->
+        <int n="6" type="int">0</int> <!-- wheel pants -->
+        <float n="0" type="float">0</float> <!-- nav lights -->
+        <float n="1" type="float">0</float> <!-- landing light -->
+        <float n="2" type="float">0</float> <!-- taxi light -->
+        
+        <!--
+            <double n="0" alias="/sim/model/door-positions/pilot_door/position-norm"/>
+            <double n="1" alias="/sim/model/door-positions/passenger_door/position-norm"/>
+            <double n="2" alias="/sim/model/door-positions/pilot_window/position-norm"/>
+            <double n="3" alias="/sim/model/door-positions/baggage_door/position-norm"/>
+            <double n="4" alias="/sim/model/door-positions/vent[0]/position-norm"/>
+            <double n="5" alias="/sim/model/door-positions/vent[1]/position-norm"/>
+            <double n="6" alias="/sim/model/door-positions/vent[2]/position-norm"/>
+            <double n="7" alias="/sim/model/door-positions/vent[3]/position-norm"/>
+            -->
+            
+          </generic>
+        </multiplay>
+        
+        <view n="0">
+          <internal>true</internal>
+          <config>
+            <x-offset-m>-0.21</x-offset-m>
+            <y-offset-m>0.59</y-offset-m>
+            <z-offset-m>0.42</z-offset-m>
+            <pitch-offset-deg>-10</pitch-offset-deg>
+            <default-field-of-view-deg type="double">55.0</default-field-of-view-deg>
+          </config>
+        </view>
+        <view n="100">
+          <name>Co-Pilot View</name>
+          <type>lookfrom</type>
+          <internal type="bool">true</internal>
+          <config>
+            <from-model type="bool">true</from-model>
+            <from-model-idx type="int">0</from-model-idx>
+            <ground-level-nearplane-m type="double">0.5f</ground-level-nearplane-m>
+            <default-pitch-deg type="double">0</default-pitch-deg>
+            <default-heading-deg type="double">0</default-heading-deg>
+            <front-direction-deg type="double">0</front-direction-deg>
+            <front-left-direction-deg type="double">45</front-left-direction-deg>
+            <left-direction-deg type="double">90</left-direction-deg>
+            <back-left-direction-deg type="double">135</back-left-direction-deg>
+            <back-direction-deg type="double">180</back-direction-deg>
+            <back-right-direction-deg type="double">225</back-right-direction-deg>
+            <right-direction-deg type="double">270</right-direction-deg>
+            <front-right-direction-deg type="double">315</front-right-direction-deg>
+            <x-offset-m archive="y">0.21</x-offset-m>
+            <y-offset-m archive="y">0.59</y-offset-m>
+            <z-offset-m archive="y">0.42</z-offset-m>
+            <pitch-offset-deg>-10</pitch-offset-deg>
+            <default-field-of-view-deg type="double">55.0</default-field-of-view-deg>
+          </config>
+        </view>
+        
+        <flaps>
+          <setting>0.0</setting>
+          <setting>0.5</setting>
+          <setting>1.0</setting>
+        </flaps>
+        
+        <weight n="0">
+          <name>Pilot</name>
+          <weight-lb>180</weight-lb>
+          <max-lb>300</max-lb>
+        </weight>
+        
+        <weight n="1">
+          <name>Copilot</name>
+          <weight-lb>0</weight-lb>
+          <max-lb>300</max-lb>
+        </weight>
+        
+        <weight n="2">
+          <name>Left passenger</name>
+          <weight-lb>0</weight-lb>
+          <max-lb>300</max-lb>
+        </weight>
+        
+        <weight n="3">
+          <name>Right passenger</name>
+          <weight-lb>0</weight-lb>
+          <max-lb>300</max-lb>
+        </weight>
+        
+        <weight n="4">
+          <name>Baggage</name>
+          <weight-lb>0</weight-lb>
+          <max-lb>100</max-lb>
+        </weight>
+        
+        <menubar>
+          <default>
+            <menu n="100">
+              <label>pa22-160</label>
+              <enabled type="bool">true</enabled>
+              <item>
+                <label>Immatriculation</label>
+                <binding>
+                  <command>nasal</command>
+                  <script>tripacer.immat_dialog.toggle()</script>
+                </binding>
+              </item>
+              <item>
+                <label>Select Livery</label>
+                <binding>
+                  <command>nasal</command>
+                  <script>aircraft.livery.dialog.open()</script>
+                </binding>
+              </item>
+              <item>
+                <label>Wheel Pants Toggle</label>
+                <binding>
+                  <command>property-toggle</command>
+                  <property>sim/model/show-wheel-pants</property>
+                </binding>
+                <binding>
+                  <command>property-toggle</command>
+                  <property>sim/multiplay/generic/int[6]</property>
+                </binding>
+              </item>
+              <item>
+                <label>Magnetic Compass Toggle</label>
+                <binding>
+                  <command>property-toggle</command>
+                  <property>sim/model/move-compass</property>
+                </binding>
+              </item>
+              <!--      <item>
+                <label>Auto Coordination Toggle</label>
+                <binding>
+                  <command>nasal</command>
+                  <script>tripacer.auto_coordination_switch()</script>
+                </binding>
+              </item>  -->
+              <item>
+                <label>Autostart</label>
+                <binding>
+                  <command>nasal</command>
+                  <script>tripacer.autostart()</script>
+                </binding>
+              </item>
+            </menu>
+          </default>
+        </menubar>
+        
+      </sim>
+      
+      <!--
+          Start simulation in cold and dark cockpit.
+          -->
+      
+      <controls>
+        
+        <electric>
+          <alternator-switch type="bool">false</alternator-switch>
+          <battery-switch type="bool">false</battery-switch>
+        </electric>
+        
+        <engines>
+          <engine>
+            <rpm type="double">0</rpm>
+            <magnetos type="int">0</magnetos>
+            <mixture type="double">0</mixture>
+            <running type="bool">false</running>
+          </engine>
+        </engines>
+        
+        <fuel>
+          <fuel-valve-pos type="double">-1</fuel-valve-pos>
+        </fuel>
+        
+        <gear>
+          <brake-parking type="double">1.0</brake-parking>
+        </gear>
+        
+      </controls>
+      <!-- make sure adf id can be heard -->
+      <instrumentation>
+        <adf>
+          <ident-audible type="bool">true</ident-audible>
+          <volume-norm type="double">0.0</volume-norm>
+        </adf>
+      </instrumentation>
+      
+      <input>
+        <keyboard>
+          <key n="1">
+            <name>Ctrl-A</name>
+            <desc>Engage/disengage autopilot</desc>
+            <binding>
+              <command>nasal</command>
+              <script>tripacer.engage_autopilot()</script>
+            </binding>
+          </key>
+          
+          <key n="19">
+            <name>Ctrl-S</name>
+            <desc>Toggle autopilot mode</desc>
+            <binding>
+              <command>property-toggle</command>
+              <property>controls/autoflight/ako64/turn-knob-switch</property>
+            </binding>
+            <binding>
+              <command>nasal</command>
+              <script>tripacer.choose_mode()</script>
+            </binding>
+            <binding>
+              <command>property-toggle</command>
+              <property>sim/sound/switch</property>
+            </binding>
+          </key>
+          
+          <key n="70">
+            <name>F</name>
+            <desc>Turn fuel valve right</desc>
+            <binding>
+              <command>nasal</command>
+              <script>tripacer.handle_down()</script>
+            </binding>
+            <binding>
+              <command>property-toggle</command>
+              <property>sim/sound/switch</property>
+            </binding>
+          </key>
+          
+          <key n="76">
+            <name>L</name>
+            <desc>Landing lights up</desc>
+            <binding>
+              <command>nasal</command>
+              <script>tripacer.landing_taxi_lights_switch(-1)</script>
+            </binding>
+          </key>
+          
+          <key n="100">
+            <name>d</name>
+            <desc>Dome light</desc>
+            <binding>
+              <command>nasal</command>
+              <script>tripacer.cabin_light_switch()</script>
+            </binding>
+            <binding>
+              <command>property-toggle</command>
+              <property>sim/sound/switch</property>
+            </binding>
+          </key>
+          
+          <key n="101">
+            <name>e</name>
+            <desc>Turn on/off battery</desc>
+            <binding>
+              <command>nasal</command>
+              <script>tripacer.master_switch()</script>
+            </binding>
+            <binding>
+              <command>property-toggle</command>
+              <property>sim/sound/switch</property>
+            </binding>
+          </key>
+          
+          <key n="102">
+            <name>f</name>
+            <desc>Turn fuel valve left</desc>
+            <binding>
+              <command>nasal</command>
+              <script>tripacer.handle_up()</script>
+            </binding>
+            <binding>
+              <command>property-toggle</command>
+              <property>sim/sound/switch</property>
+            </binding>
+          </key>
+          
+          <key n="108">
+            <name>l</name>
+            <desc>Landing lights down</desc>
+            <binding>
+              <command>nasal</command>
+              <script>tripacer.landing_taxi_lights_switch(1)</script>
+            </binding>
+          </key>
+          
+          <key n="115">
+            <name>s</name>
+            <desc>starter</desc>
+            <binding>
+              <command>nasal</command>
+              <script>tripacer.start_switch(1);</script>
+            </binding>
+            <mod-up>
+              <binding>
+                <command>nasal</command>
+                <script>tripacer.start_switch(0);</script>
+              </binding>
+            </mod-up>
+          </key>
+          
+        </keyboard>
+      </input>
+      
+      <nasal>
+        <tripacer>
+          <file>Aircraft/pa22/Nasal/ako64.nas</file>
+          <file>Aircraft/pa22/Nasal/doors.nas</file>
+          <file>Aircraft/pa22/Nasal/electrical.nas</file>
+          <file>Aircraft/pa22/Nasal/immat.nas</file>
+          <file>Aircraft/pa22/Nasal/liveries.nas</file>
+          <file>Aircraft/pa22/Nasal/pa22.nas</file>
+        </tripacer>
+      </nasal>
+      
+      
+    </PropertyList>
+    

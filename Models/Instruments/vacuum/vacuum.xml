@@ -1,0 +1,51 @@
+<?xml version="1.0"?>
+
+<PropertyList>
+
+  <path>vacuum.ac</path>
+
+  <animation>
+    <type>material</type>
+    <object-name>Circle</object-name>
+    <object-name>hand</object-name>
+    <emission>
+      <red>1.0</red>
+      <green>0.6</green>
+      <blue>0.3</blue>
+      <factor-prop>sim/model//material/instruments/factor</factor-prop>
+    </emission>
+  </animation>
+
+  <animation>
+    <type>rotate</type>
+    <object-name>hand</object-name>
+    <property>systems/vacuum/suction-inhg</property>
+    <interpolation>
+      <entry>
+        <ind>0.0</ind>
+        <dep>-150.0</dep>
+      </entry>
+      <entry>
+        <ind>5.0</ind>
+        <dep>0.0</dep>
+      </entry>
+      <entry>
+        <ind>10.0</ind>
+        <dep>150.0</dep>
+      </entry>
+    </interpolation>
+    <axis>
+      <x>-1.0</x>
+      <y>0.0</y>
+      <z>0.0</z>
+    </axis>
+  </animation>
+
+<!-- *** LoD *** -->
+  <animation> 
+    <type>range</type>
+    <min-m>0</min-m>
+    <max-m>30</max-m>
+  </animation>
+
+</PropertyList>

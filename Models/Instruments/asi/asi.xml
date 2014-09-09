@@ -1,0 +1,48 @@
+<?xml version="1.0"?>
+
+<PropertyList>
+
+  <path>asi.ac</path>
+
+  <animation>
+    <type>material</type>
+    <object-name>Circle</object-name>
+    <object-name>needle</object-name>
+    <emission>
+      <red>1.0</red>
+      <green>0.6</green>
+      <blue>0.3</blue>
+      <factor-prop>sim/model//material/instruments/factor</factor-prop>
+    </emission>
+  </animation>
+
+  <animation>
+    <type>rotate</type>
+    <object-name>needle</object-name>
+    <property>instrumentation/airspeed-indicator/indicated-speed-kt</property>
+    <interpolation>
+      <entry><ind>0.0</ind><dep>0.0</dep></entry>
+      <entry><ind>34.8</ind><dep>24.5</dep></entry>   <!--  40 MPH -->
+      <entry><ind>52.1</ind><dep>54.6</dep></entry>   <!--  60 MPH -->
+      <entry><ind>69.5</ind><dep>90.5</dep></entry>   <!--  80 MPH -->
+      <entry><ind>86.9</ind><dep>132.9</dep></entry>  <!-- 100 MPH -->
+      <entry><ind>104.3</ind><dep>181.2</dep></entry> <!-- 120 MPH -->
+      <entry><ind>121.7</ind><dep>230.0</dep></entry> <!-- 140 MPH -->
+      <entry><ind>139.0</ind><dep>283.5</dep></entry> <!-- 160 MPH -->
+      <entry><ind>156.4</ind><dep>336.3</dep></entry> <!-- 180 MPH -->
+    </interpolation>
+    <axis>
+      <x>-1.0</x>
+      <y>0.0</y>
+      <z>0.0</z>
+    </axis>
+  </animation>
+
+<!-- *** LoD *** -->
+  <animation> 
+    <type>range</type>
+    <min-m>0</min-m>
+    <max-m>30</max-m>
+  </animation>
+
+</PropertyList>

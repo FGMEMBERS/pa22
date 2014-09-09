@@ -1,0 +1,1045 @@
+<?xml version="1.0"?>
+
+<PropertyList>
+
+  <tutorial>
+    <name>Engine Startup</name>
+    <description>
+This tutorial will familiarize you with Cockpit layout and will show you step by step how to start the engine.
+
+One note about mouse control before you'll start...
+You can interact with many objects in the Cockpit by clicking on them or by moving cursor over them and using mouse wheel. In this tutorial you will find two terms regarding mouse: LEFT CLICK and USE MOUSE.
+The first term is straightforward and it means that you can operate particular object simply by using left mouse button.
+Second term meaning that you can toggle particular switch by left clicking on it (and using mouse wheel up/down movement to push and pull object's) or (in case of other objects than switches), you can left click (or move wheel up) to turn on, push or increase value or use middle mouse button (or move wheel down) to turn off, pull or decrease value of particular object.
+
+I know it sounds complicated but is quite simple in practice... i promise ;)
+    </description>
+
+    <init>
+      <set>
+        <property>/controls/electric/battery-switch</property>
+        <value>0</value>
+      </set>
+      <set>
+        <property>/instrumentation/turn-indicator/serviceable</property>
+        <value>0</value>
+      </set>
+      <set>
+        <property>/controls/electric/alternator-switch</property>
+        <value>0</value>
+      </set>
+      <set>
+        <property>/controls/engines/engine[0]/magnetos</property>
+        <value>0</value>
+      </set>
+      <set>
+        <property>/controls/engines/engine[0]/primer-pump</property>
+        <value>0</value>
+      </set>
+      <set>
+        <property>/controls/engines/engine[0]/mixture</property>
+        <value>0</value>
+      </set>
+      <set>
+        <property>/consumables/fuel/tank[0]/selected</property>
+        <value>false</value>
+      </set>
+      <set>
+        <property>/consumables/fuel/tank[1]/selected</property>
+        <value>false</value>
+      </set>
+      <set>
+        <property>/controls/fuel/fuel-valve-pos</property>
+        <value>-1</value>
+      </set>
+      <set>
+        <property>/engines/engine/out-of-fuel</property>
+        <value>true</value>
+      </set>
+      <set>
+        <property>/engines/engine[0]/running</property>
+        <value>false</value>
+      </set>
+      <set>
+        <property>/consumables/fuel/tank[0]/level-gal_us</property>
+        <value>18</value>
+      </set>
+      <set>
+        <property>/consumables/fuel/tank[1]/level-gal_us</property>
+        <value>18</value>
+      </set>
+      <set>
+        <property>/sim/model/yokes-alpha</property>
+        <value>0</value>
+      </set>
+      <view>
+        <heading-offset-deg>0</heading-offset-deg>
+        <pitch-offset-deg>-10</pitch-offset-deg>
+        <roll-offset-deg>0</roll-offset-deg>
+        <field-of-view>55</field-of-view>
+        <x-offset-m>-0.21</x-offset-m>
+        <y-offset-m>0.59</y-offset-m>
+        <z-offset-m>0.42</z-offset-m>
+      </view>
+    </init>
+
+    <step>
+      <message>Welcome,this tutorial will show you how to start the engine on the Piper Tri-Pacer airplane.</message>
+      <interval>10</interval>
+    </step>
+
+    <step>
+      <message>First we need to make sure that the parking brake is engaged.</message>
+    </step>
+    <step>
+      <message>the parking brake control seems to be pulled out - that means it is engaged.</message>
+      <view>
+        <heading-offset-deg>8</heading-offset-deg>
+        <pitch-offset-deg>-31</pitch-offset-deg>
+        <field-of-view>23</field-of-view>
+      </view>
+      <marker>
+        <x-m>-0.122</x-m>
+        <y-m>-0.293</y-m>
+        <z-m>0.246</z-m>
+        <scale>2.0</scale>
+      </marker>
+    </step>
+    <step>
+      <message>If it isnt, you can correct this by USING LEFT MOUSE or [Shift]+[b] keys.</message>
+      <view>
+        <heading-offset-deg>8</heading-offset-deg>
+        <pitch-offset-deg>-31</pitch-offset-deg>
+        <field-of-view>23</field-of-view>
+      </view>
+      <marker>
+        <x-m>-0.122</x-m>
+        <y-m>-0.293</y-m>
+        <z-m>0.246</z-m>
+        <scale>2.0</scale>
+      </marker>
+      <error>
+        <message>Engage parking brake (USE MOUSE or [Shift]+[b] keys)...</message>
+        <condition>
+          <not>
+            <property>/controls/gear/brake-parking</property>
+          </not>
+        </condition>
+      </error>
+      <exit>
+        <condition>
+          <property>/controls/gear/brake-parking</property>
+        </condition>
+      </exit>
+    </step>
+
+    <step>
+      <message>Now we can turn the plane's electrical system on.</message>
+    </step>
+    <step>
+      <message>In a Tri-Pacer, the master switch is located under the pilot seat.</message>
+      <view>
+        <heading-offset-deg>0</heading-offset-deg>
+        <pitch-offset-deg>-65</pitch-offset-deg>
+        <field-of-view>55</field-of-view>
+      </view>
+    </step>
+    <step>
+      <message>To engage IT, LEFT CLICK on the left side of pilot seat or press [e] key on the keyboard.</message>
+      <view>
+        <heading-offset-deg>25</heading-offset-deg>
+        <pitch-offset-deg>-65</pitch-offset-deg>
+        <field-of-view>55</field-of-view>
+      </view>
+      <marker>
+        <x-m>0.19</x-m>
+        <y-m>-0.31</y-m>
+        <z-m>-0.05</z-m>
+        <scale>7.0</scale>
+      </marker>
+      <error>
+        <message>LEFT CLICK on the left side of pilot seat or press [e] key on the keyboard...</message>
+        <condition>
+          <not>
+            <property>/controls/electric/battery-switch</property>
+          </not>
+        </condition>
+      </error>
+      <exit>
+        <condition>
+          <property>/controls/electric/battery-switch</property>
+        </condition>
+        <message>Good.</message>
+      </exit>
+    </step>
+
+    <step>
+      <message>Now we should check some of the planes instruments.</message>
+      <view>
+        <heading-offset-deg>340</heading-offset-deg>
+        <pitch-offset-deg>-27</pitch-offset-deg>
+        <field-of-view>55</field-of-view>
+      </view>
+    </step>
+    <step>
+      <message>By looking at ammeter you can confirm that the electrical system is on.</message>
+      <view>
+        <heading-offset-deg>313</heading-offset-deg>
+        <pitch-offset-deg>-12.2</pitch-offset-deg>
+        <field-of-view>7</field-of-view>
+      </view>
+    </step>
+    <step>
+      <message>It should indicate about minus twenty amperes.</message>
+      <view>
+        <heading-offset-deg>313</heading-offset-deg>
+        <pitch-offset-deg>-12.2</pitch-offset-deg>
+        <field-of-view>7</field-of-view>
+      </view>
+    </step>
+
+    <step>
+    <message>If the instruments are hard to read you can turn on the instrument lights to see them better.</message>
+      <view>
+        <heading-offset-deg>7</heading-offset-deg>
+        <pitch-offset-deg>-28</pitch-offset-deg>
+        <field-of-view>55</field-of-view>
+      </view>
+    </step>
+    <step>
+      <message>You operate those lights by USING MOUSE on nav/instrument lights knob.</message>
+    </step>
+    <step>
+      <message>Try putting the lights on now... increase instrument lights a little.</message>
+      <view>
+        <heading-offset-deg>12</heading-offset-deg>
+        <pitch-offset-deg>-30</pitch-offset-deg>
+        <field-of-view>30</field-of-view>
+      </view>
+      <marker>
+        <x-m>-0.11</x-m>
+        <y-m>-0.34</y-m>
+        <z-m>0.25</z-m>
+        <scale>2.0</scale>
+      </marker>
+      <error>
+        <message>Increase instrument lights a little more...</message>
+        <condition>
+          <greater-than-equals>
+            <property>/controls/switches/panel-lights-factor</property>
+            <value>0.8</value>
+          </greater-than-equals>
+        </condition>
+      </error>
+      <exit>
+        <condition>
+          <less-than>
+            <property>/controls/switches/panel-lights-factor</property>
+            <value>0.8</value>
+          </less-than>
+        </condition>
+        <message>Good, we will now continue on to the next step.</message>
+      </exit>
+    </step>
+
+    <step>
+      <message>As you can probably see the yoke is obstructing some of the instruments.</message>
+      <view>
+        <heading-offset-deg>0</heading-offset-deg>
+        <pitch-offset-deg>-32</pitch-offset-deg>
+        <field-of-view>45</field-of-view>
+      </view>
+      <interval>10</interval>
+    </step>
+    <step>
+      <message>You can control its visibility at anytime just by USING MOUSE on yoke hub.</message>
+    </step>
+    <step>
+      <message>We don't really need yokes for the rest of tutorial so make them completely invisible.</message>
+      <view>
+        <heading-offset-deg>0</heading-offset-deg>
+        <pitch-offset-deg>-32</pitch-offset-deg>
+        <field-of-view>36</field-of-view>
+      </view>
+      <marker>
+        <x-m>-0.107</x-m>
+        <y-m>-0.220</y-m>
+        <z-m>0.249</z-m>
+        <scale>2.0</scale>
+      </marker>
+      <error>
+        <message>Make the yokes invisible (USE MOUSE)...</message>
+        <condition>
+          <less-than>
+            <property>/sim/model/yokes-alpha</property>
+            <value>1.0</value>
+          </less-than>
+        </condition>
+      </error>
+      <exit>
+        <condition>
+          <equals>
+            <property>/sim/model/yokes-alpha</property>
+            <value>1.0</value>
+          </equals>
+        </condition>
+        <message>Great, you can see all instruments now!</message>
+        <view>
+          <heading-offset-deg>323</heading-offset-deg>
+          <pitch-offset-deg>-14</pitch-offset-deg>
+          <field-of-view>55</field-of-view>
+        </view>
+        <interval>10</interval>
+      </exit>
+    </step>
+
+    <step>
+      <message>Next we need to check fuel quantity.</message>
+      <view>
+        <heading-offset-deg>315</heading-offset-deg>
+        <pitch-offset-deg>-19</pitch-offset-deg>
+        <field-of-view>12</field-of-view>
+      </view>
+    </step>
+    <step>
+      <message>Tanks are full, so we have enough fuel for now.</message>
+    </step>
+    <step>
+      <message>Just one note to remember before we continue...</message>
+    </step>
+    <step>
+      <message>Always check if you have enough fuel for your flight before you start the engine.</message>
+    </step>
+    <step>
+      <message>The Tri-Pacer saves fuel state when you exit simulator and continues with this quantity next time you start the Tri-pacer in Flightgear.</message>
+    </step>
+    <step>
+      <message>So once again: ALWAYS CHECK THE FUEL TANKS!</message>
+    </step>
+
+    <step>
+      <message>Now we need to open up the fuel valve.</message>
+      <view>
+        <heading-offset-deg>0</heading-offset-deg>
+        <pitch-offset-deg>-10</pitch-offset-deg>
+        <field-of-view>55</field-of-view>
+      </view>
+    </step>
+    <step>
+      <message>the tripacers fuel tank selector is placed on your left side.</message>
+      <view>
+        <heading-offset-deg>13</heading-offset-deg>
+        <pitch-offset-deg>-42</pitch-offset-deg>
+        <field-of-view>55</field-of-view>
+      </view>
+      <marker>
+        <x-m>0.003</x-m>
+        <y-m>-0.36</y-m>
+        <z-m>0.12</z-m>
+        <scale>6.0</scale>
+      </marker>
+    </step>
+    <step>
+      <message>You can operate it by USING MOUSE or using [f] and [Shift]+[f] keys.</message>
+    </step>
+     <step>
+      <message>Select the left fuel tank now.</message>
+      <view>
+        <heading-offset-deg>82</heading-offset-deg>
+        <pitch-offset-deg>-29</pitch-offset-deg>
+        <field-of-view>39</field-of-view>
+        <x-offset-m>-0.089</x-offset-m>
+        <y-offset-m>0.2</y-offset-m>
+        <z-offset-m>-0.04</z-offset-m>
+      </view>
+      <error>
+        <message>Select left fuel tank...</message>
+        <condition>
+          <not-equals>
+            <property>/controls/fuel/fuel-valve-pos</property>
+            <value>0</value>
+          </not-equals>
+        </condition>
+      </error>
+      <exit>
+        <condition>
+          <equals>
+            <property>/controls/fuel/fuel-valve-pos</property>
+            <value>0</value>
+          </equals>
+        </condition>
+      </exit>
+    </step>   
+    <step>
+      <message>OK... with fuel tank selected we can continue to the next step.</message>
+    </step>
+
+    <step>
+      <message>
+      When trying to start cold engine (every time you start the sim)
+      You need to manually pump some fuel into the cylinders.
+      </message>
+      <view>
+        <heading-offset-deg>340</heading-offset-deg>
+        <pitch-offset-deg>-27</pitch-offset-deg>
+        <field-of-view>55</field-of-view>
+        <x-offset-m>-0.21</x-offset-m>
+        <y-offset-m>0.59</y-offset-m>
+        <z-offset-m>0.42</z-offset-m>
+      </view>
+    </step>
+    <step>
+      <message>You doing it by LEFT CLICKING on primer.</message>
+    </step>
+    <step>
+      <message>Let's prime minimum three strokes (LEFT CLICK minimum six times)...</message>
+      <view>
+        <heading-offset-deg>340</heading-offset-deg>
+        <pitch-offset-deg>-31</pitch-offset-deg>
+        <field-of-view>32</field-of-view>
+      </view>
+      <marker>
+        <x-m>-0.121</x-m>
+        <y-m>0.110</y-m>
+        <z-m>0.244</z-m>
+        <scale>2.0</scale>
+      </marker>
+      <error>
+        <message>Prime once more please...</message>
+        <condition>
+          <less-than>
+            <property>/controls/engines/engine[0]/primer-pump</property>
+            <value>6</value>
+          </less-than>
+        </condition>
+      </error>
+      <exit>
+        <message>Good.</message>
+        <condition>
+          <greater-than>
+            <property>/controls/engines/engine[0]/primer-pump</property>
+            <value>5</value>
+          </greater-than>
+        </condition>
+      </exit>     
+    </step>
+
+    <step>
+      <message>Now... make sure the mixture control is set to full rich position.</message>
+      <marker>
+        <x-m>-0.093</x-m>
+        <y-m>0.051</y-m>
+        <z-m>0.246</z-m>
+        <scale>4.0</scale>
+      </marker>
+    </step>
+    <step>
+      <message>You can operate mixture by USING MOUSE or [m] and [Shift]+[m] keys.</message>
+      <view>
+        <heading-offset-deg>340</heading-offset-deg>
+        <pitch-offset-deg>-31</pitch-offset-deg>
+        <field-of-view>32</field-of-view>
+      </view>
+      <marker>
+        <x-m>-0.093</x-m>
+        <y-m>0.051</y-m>
+        <z-m>0.246</z-m>
+        <scale>4.0</scale>
+      </marker>
+      <error>
+        <message>Set mixture to full rich position...</message>
+        <condition>
+          <less-than-equals>
+            <property>/controls/engines/engine[0]/mixture</property>
+            <value>0.8</value>
+          </less-than-equals>
+        </condition>
+      </error>
+      <exit>
+        <message>Good.</message>
+        <condition>
+          <greater-than>
+            <property>/controls/engines/engine[0]/mixture</property>
+            <value>0.8</value>
+          </greater-than>
+        </condition>
+      </exit>     
+    </step>
+
+    <step>
+      <message>Next make sure throttle is set to idle (or close to idle) position.</message>
+      <marker>
+        <x-m>-0.073</x-m>
+        <y-m>-0.004</y-m>
+        <z-m>0.259</z-m>
+        <scale>5.0</scale>
+      </marker>
+    </step>
+    <step>
+      <message>You can operate throttle by USING MOUSE or [Page Up] and [Page Down] keys.</message>
+      <view>
+        <heading-offset-deg>340</heading-offset-deg>
+        <pitch-offset-deg>-31</pitch-offset-deg>
+        <field-of-view>32</field-of-view>
+      </view>
+      <marker>
+        <x-m>-0.073</x-m>
+        <y-m>-0.004</y-m>
+        <z-m>0.259</z-m>
+        <scale>5.0</scale>
+      </marker>
+      <error>
+        <message>Set throttle to idle (or close to idle) position...</message>
+        <condition>
+          <greater-than-equals>
+            <property>/controls/engines/engine[0]/throttle</property>
+            <value>0.4</value>
+          </greater-than-equals>
+        </condition>
+      </error>
+      <exit>
+        <message>OK.</message>
+        <condition>
+          <less-than>
+            <property>/controls/engines/engine[0]/throttle</property>
+            <value>0.4</value>
+          </less-than>
+        </condition>
+      </exit>     
+    </step>
+
+    <step>
+      <message>Now check if carburetor heat is disengaged (pushed in).</message>
+      <marker>
+        <x-m>-0.114</x-m>
+        <y-m>-0.122</y-m>
+        <z-m>0.246</z-m>
+        <scale>2.0</scale>
+      </marker>
+    </step>
+    <step>
+      <message>You can operate carburetor heat by USING MOUSE.</message>
+      <view>
+        <heading-offset-deg>340</heading-offset-deg>
+        <pitch-offset-deg>-31</pitch-offset-deg>
+        <field-of-view>32</field-of-view>
+      </view>
+      <marker>
+        <x-m>-0.114</x-m>
+        <y-m>-0.122</y-m>
+        <z-m>0.246</z-m>
+        <scale>2.0</scale>
+      </marker>
+      <error>
+        <message>Please disengage carburetor heating...</message>
+        <condition>
+            <property>controls/anti-ice/engine/carb-heat</property>
+        </condition>
+      </error>
+      <exit>
+        <message>Great.</message>
+        <condition>
+          <not>
+            <property>controls/anti-ice/engine/carb-heat</property>
+          </not>
+        </condition>
+      </exit>     
+    </step>
+
+    <step>
+      <message>Last thing before we engage starter is to set magnetos to "Both" position.</message>
+      <marker>
+        <x-m>-0.124</x-m>
+        <y-m>-0.063</y-m>
+        <z-m>0.244</z-m>
+        <scale>2.0</scale>
+      </marker>
+    </step>
+    <step>
+      <message>USE MOUSE or hit three times [Shift]+[Right Square Bracket] keys...</message>
+      <view>
+        <heading-offset-deg>340</heading-offset-deg>
+        <pitch-offset-deg>-31</pitch-offset-deg>
+        <field-of-view>32</field-of-view>
+      </view>
+      <marker>
+        <x-m>-0.124</x-m>
+        <y-m>-0.063</y-m>
+        <z-m>0.244</z-m>
+        <scale>2.0</scale>
+      </marker>
+      <error>
+        <message>Set magnetos to "Both" position...</message>
+        <condition>
+          <not-equals>
+            <property>/controls/engines/engine[0]/magnetos</property>
+            <value>3</value>
+          </not-equals>
+        </condition>
+      </error>
+      <exit>
+        <message>Good.</message>
+        <condition>
+          <equals>
+            <property>/controls/engines/engine[0]/magnetos</property>
+            <value>3</value>
+          </equals>
+        </condition>
+      </exit>     
+    </step>
+
+    <step>
+      <message>Starter switch (as well as Master Switch) is located under pilot seat.</message>
+      <view>
+        <heading-offset-deg>0</heading-offset-deg>
+        <pitch-offset-deg>-65</pitch-offset-deg>
+        <field-of-view>55</field-of-view>
+      </view>
+    </step>
+    <step>
+      <message>
+      CLICK AND HOLD LEFT MOUSE BUTTON on right side of the pilot seat or hold (s) key until the engine has started.
+      </message>
+      <view>
+        <heading-offset-deg>340</heading-offset-deg>
+        <pitch-offset-deg>-65</pitch-offset-deg>
+        <field-of-view>55</field-of-view>
+      </view>
+      <marker>
+        <x-m>0.19</x-m>
+        <y-m>-0.12</y-m>
+        <z-m>-0.05</z-m>
+        <scale>7.0</scale>
+      </marker>
+      <error>
+        <message>
+        CLICK AND HOLD LEFT MOUSE BUTTON on right side of the pilot seat or hold (s) key until engine will engage...
+        </message>
+        <condition>
+          <not>
+            <property>/engines/engine[0]/running</property>
+          </not>
+        </condition>
+      </error>
+      <exit>
+         <condition>
+           <property>/engines/engine[0]/running</property>
+         </condition>
+      </exit>
+    </step>
+
+    <step>
+      <message>Congratulations... the engine is running!</message>
+      <view>
+        <heading-offset-deg>0</heading-offset-deg>
+        <pitch-offset-deg>-10</pitch-offset-deg>
+        <roll-offset-deg>0</roll-offset-deg>
+        <field-of-view>55</field-of-view>
+        <x-offset-m>-0.21</x-offset-m>
+        <y-offset-m>0.59</y-offset-m>
+        <z-offset-m>0.42</z-offset-m>
+      </view>
+    </step>
+    
+    <step>
+      <message>
+      Last thing for as to do is to ensure that battery is now charged instead of being power source.
+      </message>
+    </step>
+    <step>
+      <message>Ammeter should indicate about plus seven amperes.</message>
+      <view>
+        <heading-offset-deg>313</heading-offset-deg>
+        <pitch-offset-deg>-12.2</pitch-offset-deg>
+        <field-of-view>7</field-of-view>
+      </view>
+      <exit>
+         <condition>
+           <greater-than>
+             <property>/systems/electrical/amps</property>
+             <value>6.0</value>
+           </greater-than>
+         </condition>
+      </exit>
+    </step>
+    <step>
+      <message>Great... we are sure now that alternator is working.</message>
+      <view>
+        <heading-offset-deg>313</heading-offset-deg>
+        <pitch-offset-deg>-12.2</pitch-offset-deg>
+        <field-of-view>7</field-of-view>
+      </view>
+    </step>
+
+    <step>
+      <message>That conclude "Engine Startup" tutorial.</message>
+      <view>
+        <heading-offset-deg>0</heading-offset-deg>
+        <pitch-offset-deg>-10</pitch-offset-deg>
+        <roll-offset-deg>0</roll-offset-deg>
+        <field-of-view>55</field-of-view>
+        <x-offset-m>-0.21</x-offset-m>
+        <y-offset-m>0.59</y-offset-m>
+        <z-offset-m>0.42</z-offset-m>
+      </view>
+    </step>   
+    <step>
+      <message>You can release park brake and taxi to your runway.</message>
+      <view>
+        <heading-offset-deg>0</heading-offset-deg>
+        <pitch-offset-deg>-10</pitch-offset-deg>
+        <roll-offset-deg>0</roll-offset-deg>
+        <field-of-view>55</field-of-view>
+        <x-offset-m>-0.21</x-offset-m>
+        <y-offset-m>0.59</y-offset-m>
+        <z-offset-m>0.42</z-offset-m>
+      </view>
+    </step>    
+    <step>
+      <message>You may consider also setting yokes visible again.</message>
+    </step>
+
+    <end>
+      <message>Have a nice, relaxing flight.</message>
+    </end>
+  </tutorial>
+
+<!-- ####################################################################### -->
+<!-- ####################################################################### -->
+
+  <tutorial>
+    <name>Autopilot</name>
+    <description>
+This tutorial will familiarize you with AKO64 Autocontrol system. AKO64 is very simple single-axis (roll only) autopilot (similar to Century IIB autopilot you may know from Piper PA24-250 model). Although AKO64 is very simple, it is operated quite different than its modern counterparts. That's why you may want to use this tutorial.
+
+Note about mouse control...
+Knobs used in this tutorial are controlled in slightly different manner than controls described in "Engine Startup" tutorial:
+* To press or depress knob - you need  LEFT CLICK on it.
+* To rotate knob left or right - you can LEFT CLICK left or right of it or place cursor over the knob and use MOUSE WHEEL.
+* To rotate knob with greater rate of turn - you can use MIDDLE MOUSE BUTTON or MOUSE WHEEL left or right of the knob.
+
+
+You can start tutorial both: on the ground and in the air, but starting it first time parked somewhere on the ground is probably better idea ;)
+    </description>
+
+    <init>
+      <set>
+        <property>/autopilot/ako64/engage</property>
+        <value>false</value>
+      </set>
+      <set>
+        <property>/autopilot/ako64/locks/heading</property>
+        <value>false</value>
+      </set>
+      <set>
+        <property>/autopilot/ako64/locks/roll</property>
+        <value>false</value>
+      </set>
+      <set>
+        <property>/autopilot/ako64/internal/roll-deg</property>
+        <value>0</value>
+      </set>
+      <set>
+        <property>/controls/autoflight/ako64/turn-knob-switch</property>
+        <value>0</value>
+      </set>
+      <view>
+        <heading-offset-deg>0</heading-offset-deg>
+        <pitch-offset-deg>-10</pitch-offset-deg>
+        <roll-offset-deg>0</roll-offset-deg>
+        <field-of-view>55</field-of-view>
+        <x-offset-m>-0.21</x-offset-m>
+        <y-offset-m>0.59</y-offset-m>
+        <z-offset-m>0.42</z-offset-m>
+      </view>
+    </init>
+
+    <step>
+      <message>Welcome, this tutorial will teach you how to operate AKO64 Autocontrol.</message>
+      <interval>10</interval>
+    </step>
+
+    <step>
+      <message>At the beginning let's make sure that electrical system is on...</message>
+      <error>
+        <message>It seems we don't have power... please engage master switch.</message>
+        <condition>
+          <not>
+            <property>/controls/electric/battery-switch</property>
+          </not>
+        </condition>
+      </error>
+      <exit>
+        <condition>
+          <property>/controls/electric/battery-switch</property>
+        </condition>
+      </exit>
+    </step>
+    <step>
+      <message>OK, master switch is on so we can continue...</message>
+    </step>
+
+    <step>
+      <message>First thing you need to know about autopilot is how to engage and disengage it.</message>
+    </step>
+    <step>
+      <message>You can engage (or disengage) autopilot anytime using [Ctrl]+[a] key combination.</message>
+    </step>
+    <step>
+      <message>Actual button is not modeled in the cabin so only way to operate it is a keyboard.</message>
+    </step>
+
+    <step>
+      <message>Let's look closer at autopilot now.</message>
+      <view>
+        <heading-offset-deg>1</heading-offset-deg>
+        <pitch-offset-deg>-13</pitch-offset-deg>
+        <field-of-view>27</field-of-view>
+      </view>
+    </step>
+    <step>
+      <message>That's right... this is whole autopilot!</message>
+      <marker>
+        <x-m>-0.143</x-m>
+        <y-m>-0.225</y-m>
+        <z-m>0.477</z-m>
+        <scale>1.5</scale>
+      </marker>
+    </step>
+    <step>
+      <message>Let's look even closer.</message>
+      <view>
+        <heading-offset-deg>1.5</heading-offset-deg>
+        <pitch-offset-deg>-11.4</pitch-offset-deg>
+        <field-of-view>7</field-of-view>
+      </view>
+    </step>
+    <step>
+      <message>As you can see there are two knobs.</message>
+    </step>
+    <step>
+      <message>The little one (called "Turn Trim") isn't active so we don't have to worry about it.</message>
+      <view>
+        <heading-offset-deg>1.5</heading-offset-deg>
+        <pitch-offset-deg>-11.4</pitch-offset-deg>
+        <field-of-view>7</field-of-view>
+      </view>
+      <marker>
+        <x-m>-0.115</x-m>
+        <y-m>-0.225</y-m>
+        <z-m>0.480</z-m>
+        <scale>0.6</scale>
+      </marker>
+    </step>
+    <step>
+      <message>The bigger one (called "Turn Control") is the main control of autopilot.</message>
+      <view>
+        <heading-offset-deg>1.5</heading-offset-deg>
+        <pitch-offset-deg>-11.4</pitch-offset-deg>
+        <field-of-view>7</field-of-view>
+      </view>
+      <marker>
+        <x-m>-0.143</x-m>
+        <y-m>-0.225</y-m>
+        <z-m>0.477</z-m>
+        <scale>1.5</scale>
+      </marker>
+    </step>
+
+    <step>
+      <message>Now lets try to turn on autopilot...</message>
+      <view>
+        <heading-offset-deg>0</heading-offset-deg>
+        <pitch-offset-deg>-10</pitch-offset-deg>
+        <field-of-view>55</field-of-view>
+      </view>
+    </step>
+    <step>
+      <message>Press on (LEFT CLICK or use [Ctrl]+[s] keys) Turn Control knob.</message>
+      <marker>
+        <x-m>-0.143</x-m>
+        <y-m>-0.225</y-m>
+        <z-m>0.477</z-m>
+        <scale>1.5</scale>
+      </marker>
+      <error>
+        <message>Press on (LEFT CLICK or use [Ctrl]+[s] keys) Turn Control knob...</message>
+        <condition>
+          <not>
+            <property>/controls/autoflight/ako64/turn-knob-switch</property>
+          </not>
+        </condition>
+      </error>
+      <error>
+        <message>Make sure Master Autopilot switch is on (use [Ctrl]+[a] keys)... </message>
+        <condition>
+          <not>
+            <property>/autopilot/ako64/engage</property>
+          </not>
+        </condition>
+      </error>
+      <exit>
+        <condition>
+          <property>/autopilot/ako64/locks/roll</property>
+        </condition>
+      </exit>
+    </step>
+    <step>
+      <message>
+      Great, to confirm that autopilot is actually working
+      you can rotate the Turn Control knob full right and left.
+      </message>
+    </step>
+    <step>
+      <message>You should see corresponding movement of yokes.</message>
+    </step>
+    <step>
+      <message>When you have done, center the knob again.</message>
+      <error>
+        <message>When you have done, center the knob again.</message>
+        <condition>
+          <or>
+            <greater-than>
+              <property>/autopilot/ako64/internal/roll-deg</property>
+              <value>1</value>
+            </greater-than>
+            <less-than>
+              <property>/autopilot/ako64/internal/roll-deg</property>
+              <value>-1</value>
+            </less-than>
+          </or>
+        </condition>
+      </error>
+      <error>
+        <message>
+        You probably accidentally pulled Turn Control knob out.
+        Please press it again (LEFT CLICK or use [Ctrl]+[s] keys).
+        </message>
+        <condition>
+          <not>
+            <property>/autopilot/ako64/locks/roll</property>
+          </not>
+        </condition>
+      </error>
+      <exit>
+        <condition>
+          <and>
+            <less-than-equals>
+              <property>/autopilot/ako64/internal/roll-deg</property>
+              <value>1</value>
+            </less-than-equals>
+            <greater-than-equals>
+              <property>/autopilot/ako64/internal/roll-deg</property>
+              <value>-1</value>
+            </greater-than-equals>
+          </and>
+          <property>/autopilot/ako64/locks/roll</property>
+        </condition>
+      </exit>
+    </step>
+    <step>
+      <message>As you can see autopilot is now in somewhat wee can call a Roll Mode.</message>
+    </step>
+    <step>
+      <message>
+      It controls wing's roll so you can perform some basic maneuvers:
+      fly straight or perform turns.
+      </message>
+    </step>
+
+    <step>
+      <message>Next we will engage second of autopilot's modes: the Heading Mode.</message>
+    </step>
+    <step>
+      <message>First thing we need to do is setting directional gyro to zero heading.</message>
+    </step>
+    <step>
+      <message>First, mechanically cage directional gyro by LEFT CLICKING on it's knob.</message>
+      <view>
+        <heading-offset-deg>1</heading-offset-deg>
+        <pitch-offset-deg>-13</pitch-offset-deg>
+        <field-of-view>27</field-of-view>
+      </view>
+      <marker>
+        <x-m>-0.116</x-m>
+        <y-m>-0.285</y-m>
+        <z-m>0.400</z-m>
+        <scale>3</scale>
+      </marker>
+      <error>
+        <message>LEFT CLICK on marked knob... </message>
+        <condition>
+          <not>
+            <property>instrumentation/heading-indicator/caged</property>
+          </not>
+        </condition>
+      </error>
+      <exit>
+        <condition>
+          <property>instrumentation/heading-indicator/caged</property>
+        </condition>
+      </exit>
+    </step>
+    <step>
+      <message>Now set heading to zero degrees and uncage directional gyro again.</message>
+      <exit>
+        <condition>
+          <not>
+            <property>instrumentation/heading-indicator/caged</property>
+          </not>
+        </condition>
+      </exit>
+    </step>
+    <step>
+      <message>Lastly pull Turn Control knob out (LEFT CLICK or use [Ctrl]+[s] keys).</message>
+      <view>
+        <heading-offset-deg>1</heading-offset-deg>
+        <pitch-offset-deg>-13</pitch-offset-deg>
+        <field-of-view>27</field-of-view>
+      </view>
+      <marker>
+        <x-m>-0.143</x-m>
+        <y-m>-0.225</y-m>
+        <z-m>0.477</z-m>
+        <scale>1.5</scale>
+      </marker>
+      <error>
+        <message>LEFT CLICK on Turn Control knob or use [Ctrl]+[s] keys...</message>
+        <condition>
+          <not>
+            <property>/autopilot/ako64/locks/heading</property>
+          </not>
+        </condition>
+      </error>
+      <exit>
+        <condition>
+          <property>/autopilot/ako64/locks/heading</property>
+        </condition>
+      </exit>
+    </step>
+    <step>
+      <message>Autopilot is now "slaved" to directional gyro.</message>
+      <view>
+        <heading-offset-deg>0</heading-offset-deg>
+        <pitch-offset-deg>-10</pitch-offset-deg>
+        <field-of-view>55</field-of-view>
+      </view>
+    </step>
+    <step>
+      <message>You can change airplane heading by moving directional gyro's card by desired number of degrees.</message>
+    </step>
+    <step>
+      <message>By pressing Turn Control knob again you can switch back to Roll Mode anytime.</message>
+    </step>
+    <step>
+      <message>If you want to disengage autopilot, use [Ctrl]+[a] keys combination.</message>
+    </step>
+
+    <step>
+      <message>This concludes "Autopilot" tutorial...</message>
+    </step>
+    <end>
+      <message>Have a nice flight.</message>
+    </end>      
+  </tutorial>
+</PropertyList>
