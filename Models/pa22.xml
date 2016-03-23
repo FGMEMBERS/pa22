@@ -185,7 +185,7 @@
 <!-- Marker model used in tutorials -->
 
   <model>
-    <path>Models/Aircraft/marker.xml</path>
+    <path>Aircraft/Generic/marker.xml</path>
   </model>
 
 <!-- No shadow -->
