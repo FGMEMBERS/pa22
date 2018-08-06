@@ -17,6 +17,21 @@
       <cockpit type="int">4</cockpit>
       <model type="int">3</model>
     </rating>
+    <tags>
+      <tag>ga</tag>
+      <tag>bush-plane</tag>
+      <tag>piper</tag>
+      <tag>1950s</tag>
+      <tag>1960s</tag>
+      <tag>fixed-gear</tag>
+      <tag>high-wing</tag>
+      <tag>stol</tag>
+      <tag>tricycle</tag>
+      <tag>propeller</tag>
+      <tag>piston</tag>
+      <tag>single-engine</tag>
+      <tag>fixed-pitch</tag>
+    </tags>
     
     <model>
       <path>Aircraft/pa22/Models/pa22.xml</path>
