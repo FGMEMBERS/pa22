@@ -11,17 +11,38 @@
     <flight-model>yasim</flight-model>
     <aero>pa22-160-yasim</aero>
     <fuel-fraction>1.0</fuel-fraction>
+    <rating>
+      <FDM type="int">2</FDM>
+      <systems type="int">2</systems>
+      <cockpit type="int">4</cockpit>
+      <model type="int">3</model>
+    </rating>
+    <tags>
+      <tag>ga</tag>
+      <tag>bush-plane</tag>
+      <tag>piper</tag>
+      <tag>1950s</tag>
+      <tag>1960s</tag>
+      <tag>fixed-gear</tag>
+      <tag>high-wing</tag>
+      <tag>stol</tag>
+      <tag>tricycle</tag>
+      <tag>propeller</tag>
+      <tag>piston</tag>
+      <tag>single-engine</tag>
+      <tag>fixed-pitch</tag>
+    </tags>
     
     <model>
       <path>Aircraft/pa22/Models/pa22.xml</path>
-      
+      <fallback-model-index type="int">6</fallback-model-index>
       <livery>
         <file type="string"/>
       </livery>
       
       <primer-pos type="bool">false</primer-pos>
       <move-compass type="bool">false</move-compass>
-      <show-wheel-pants type="int">0</show-wheel-pants>
+      <variant type="int">0</variant> <!-- 1=wheel pants; transmitted over mp -->
       <yokes-alpha type="double">0</yokes-alpha>
       
       <door-positions>
@@ -131,7 +152,6 @@
         <int n="3" type="int">0</int> <!-- immat -->
         <int n="4" type="int">0</int> <!-- immat -->
         <int n="5" type="int">0</int> <!-- immat -->
-        <int n="6" type="int">0</int> <!-- wheel pants -->
         <float n="0" type="float">0</float> <!-- nav lights -->
         <float n="1" type="float">0</float> <!-- landing light -->
         <float n="2" type="float">0</float> <!-- taxi light -->
@@ -245,11 +265,7 @@
                 <label>Wheel Pants Toggle</label>
                 <binding>
                   <command>property-toggle</command>
-                  <property>sim/model/show-wheel-pants</property>
-                </binding>
-                <binding>
-                  <command>property-toggle</command>
-                  <property>sim/multiplay/generic/int[6]</property>
+                  <property>sim/model/variant</property>
                 </binding>
               </item>
               <item>

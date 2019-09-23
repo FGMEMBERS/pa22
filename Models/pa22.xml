@@ -427,7 +427,7 @@
     <object-name>pant_l</object-name>
     <object-name>pant_r</object-name>
     <condition>
-      <property>sim/multiplay/generic/int[6]</property>
+      <property>sim/model/variant</property>
     </condition>
   </animation>
 
